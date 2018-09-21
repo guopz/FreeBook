@@ -1,0 +1,8 @@
+/**
+ * torem
+ * @$px {[String]}  输入字号;
+ * @return {[String]} 转换后的rem, 跟字号为 50px;
+ */
+@function rem($px){
+  @return $px / 50px * 1rem;
+}

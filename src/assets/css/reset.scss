@@ -1,0 +1,19 @@
+html,body,div,ul,ol,li,p,a,span,h1,h2,h3,h4,h5,h6,img,br,hr,table,tr,td,dl,dt,dd,form {
+	margin: 0;padding: 0; box-sizing: border-box; font-size: 16px;}
+body {font-family:"微软雅黑";}
+ul,ol,li {list-style: none;}
+img {
+	border: none;
+	/*禁止弹出复制粘贴*/
+	-webkit-user-select:none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/*-webkit-touch-callout:none;*/
+
+}
+/*一般链接*/
+a {text-decoration: none;color:#555;}
+a:hover {text-decoration: none;color:none;}
+a:visited{text-decoration: none;color:none;}
+html,body {height: 100%;width: 100%;}
