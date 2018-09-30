@@ -2,13 +2,15 @@
   <div id="app">
     <headerTop></headerTop>
     <router-view/>
-    <!--<index></index>-->
+    <loading v-if="LOADING" />
   </div>
 </template>
 
 <script>
-import index from './views/index'
+import { mapGetters } from 'vuex'
+
 import headerTop from './layout/header'
+import loading from './components/loading'
 export default {
   name: 'App',
   data() {
@@ -16,9 +18,17 @@ export default {
       title: '限时免费'
     }
   },
+  computed: {
+     ...mapGetters([
+      'LOADING'
+    ])
+  },
+  created() {
+    console.log('loading', this.LOADING);
+  },
   components: {
-    index,
-    headerTop
+    headerTop,
+    loading
   }
 }
 </script>
@@ -31,12 +41,12 @@ export default {
   width: 100%;
   height: 100%;
 }
-header {
-  min-height: 50px;
-  line-height: 50px;
-  background-color: #000;
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
+
+#nprogress .spinner {
+  display: none;
+}
+
+#nprogress .bar {
+  background: #08b295;
 }
 </style>

@@ -24,23 +24,12 @@ export default {
   },
   created() {
     console.log('created');
-
-    this.myStroeTitle();
     this.request();
   },
   methods: {
     request() {
-      console.log('request');
       this.$http.get('/m/free').then(res => {
-        console.log(res);
         this.freeList = res.list;
-      });
-    },
-    myStroeTitle() {
-      this.$store.commit('changeTitle', {
-        browserHeaderTitle: '限时免费',
-        headerBack: false,
-        headerMenu: true
       });
     }
   },

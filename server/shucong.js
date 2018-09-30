@@ -17,7 +17,6 @@ const map = {
 
 // free list api
 router.get('/free', function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
 	// res.json({name: '测试接口'});
 	var getQuery = req.query;
 	var url = 'http://m.shucong.com/books/free/lists?page=1';
@@ -39,15 +38,16 @@ router.get('/free', function(req, res, next) {
 
 // free list chapter api
 router.get('/chapter', function(req, res, next) {
-	let url = dolphin + req.query.bookId;
-	dataRequest(url, res, 'chapter');
+	console.log(req.query);
+	let url = dolphin + req.query.bookId + '?page=' + req.query.curIndex;
+	dataRequest(url, res, 'chapter', req);
 });
 
 // free list chapter content api
 router.get('/article', function(req, res, next) {
 	console.log(req.query);
 	let url = dolphin + req.query.bookId + '/' + req.query.articleId + '.html';
-	dataRequest(url, res, 'article');
+	dataRequest(url, res, 'article', req);
 });
 
 /**
@@ -86,14 +86,14 @@ function http(dataUrl) {
 /**
  * 数据解析入口
  */
-function dataRequest(dataUrl, res, type) {
+function dataRequest(dataUrl, res, type, req) {
 	console.log(dataUrl);
 	http(dataUrl).then(function(body) {
 		// console.log(body);
 		if (type === 'chapter') {
-			dataParsingRules(body, res);
+			dataParsingRules(body, res, req);
 		} else if(type === 'article') {
-			dataParsingRulesContent(body, res);
+			dataParsingRulesContent(body, res, req);
 		}
 	});
 }
@@ -146,18 +146,29 @@ function writeToLocal(dataPage,fj){
  * 解析规则-免费列表页
  * http://m.shucong.com/read/11708
  */
-function dataParsingRules(body, res) {
+function dataParsingRules(body, res, req) {
 	let $ = cheerio.load(body),
 		list = $('.book-dir').children('a'), 
+		page = $('.page-turn .page-select').find('select').find('option');
+		lastPage = $('.article_new').children('a'),
+		curIndex = req.query.curIndex || 1,
+		chapterRange = [],
 		array = [];
 
 	for (let i = 0;i < list.length; i++) {
 		let temp = {}, el = list[i];
 		temp.name = $(el).find('.name').text();
 		temp.articleId = $(el).attr('href').match(/\d+\.html/g)[0].split('.')[0];
+		if (i == 0) {
+			chapterRange.push(temp.articleId);
+		}
 		array.push(temp);
 	}
-	res.json(API({ list: array }));
+	
+	lastPage = lastPage.attr('href').match(/\d+\.html/g)[0].split('.')[0]
+	chapterRange.push(lastPage);
+	
+	res.json(API({ list: array, totals: page.length, curIndex, chapterRange }));
 }
 
 /**
@@ -169,10 +180,10 @@ function decode(str) {
 }
 
 /**
- * 解析规则-免费列表页
+ * 解析规则-免费文章页
  * http://m.shucong.com/read/11708/3705179.html
  */
-function dataParsingRulesContent(body, res) {
+function dataParsingRulesContent(body, res, req) {
 	let $ = cheerio.load(body),
 		title = $('.chapter-head').text();
 		content = decode($('#contentText').html());

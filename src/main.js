@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import request from './api/request'
 
+import 'nprogress/nprogress.css'
 import './utils/adaptive'
 import './assets/css/reset.scss'
 

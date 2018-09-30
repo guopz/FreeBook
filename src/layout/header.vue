@@ -19,7 +19,6 @@
     },
     created() {
       this.header = this.$store.state.header;
-      console.log(this.$store);
     },
     computed: {
       back() {
@@ -70,19 +69,18 @@
 }
 
 .head-bar .head-title {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    -webkit-flex: 1;
-    -moz-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     word-break: break-all;
     font-size: 15px;
     color: #535353;
-    text-align: center
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
 
 .head-bar .goback {
