@@ -1,5 +1,6 @@
 <template>
   <div class="head-bar" :style="{display: (!menu && !back) ?'none':'block'}">
+    <div class="head-fixed">
       <div class="bar-left" @click="myGotoBack" :style="{display: back ?'block':'none'}">
           <a class="goback"></a>
       </div>
@@ -7,6 +8,7 @@
       <div class="bar-right" @click="myGotoMenu" :style="{display: menu ?'block':'none'}">
           <a href="javascript:;" class="bar-more"></a>
       </div>
+    </div>
   </div>
 </template>
 
@@ -48,13 +50,17 @@
     margin: 0;
     height: 44px;
     line-height: 44px;
-    background: #fff;
-    display: -webkit-box;
-    position: relative;
-    z-index: 101
 }
-
-.head-bar:after {
+.head-fixed {
+  position: fixed;
+  top: 0;
+  background: #fff;
+  display: -webkit-box;
+  z-index: 101;
+  width: 100%;
+  max-width: 768px;
+}
+.head-fixed:after {
     content: " ";
     position: absolute;
     left: 0;
@@ -80,7 +86,7 @@
     margin: 0 auto;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .head-bar .goback {
@@ -109,17 +115,22 @@
 
 .head-bar .bar-right {
     position: absolute;
-    right: 15px;
-    top: 0;
+    /* right: 15px;*/
+    top: 50%;
+    margin-top: -8px;
+    line-height: 0;
+    height: 16px;
 }
 
 .head-bar .bar-more {
+    position: absolute;
+    right: 16px;
     display: inline-block;
     height: 16px;
     width: 16px;
     background: url(../assets/image/open_more.png) no-repeat center;
     background-size: 16px;
-    vertical-align: text-bottom
+    /* vertical-align: text-bottom */
 }
 
 .head-bar .close-icon {

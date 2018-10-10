@@ -40,10 +40,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   height: 100%;
+  max-width: 768px;
+  min-width: 320px;
+  margin: 0 auto;
 }
 
 #nprogress .spinner {
-  display: none;
+  display: none!important;
 }
 
 #nprogress .bar {

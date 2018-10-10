@@ -18,6 +18,13 @@ module.exports = {
       //     '^/': ''
       //   }
       // }
+      // '/nodeApi/friend/list': {
+      //   target: 'http://52.80.204.53',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/': ''
+      //   }
+      // }
     },
 
     // Various Dev Server settings
@@ -51,7 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

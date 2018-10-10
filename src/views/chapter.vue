@@ -140,6 +140,7 @@
     -webkit-border-radius: 5px;
     display: block;
     font-size: 16px;
+    min-width: rem(165px);
 }
 
 .page-turn .page-select select {
