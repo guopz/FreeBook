@@ -18,4 +18,9 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## DEMO 访问地址
+> http://140.143.136.44
+
+## App下载地址
+> dist/unpackage
+> 目前只有Android版本，演示版本功能尚不完善

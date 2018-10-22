@@ -4,12 +4,10 @@ import router from '../router'
 
 let dev = process.env.NODE_ENV, BASE_API;
 
-console.log(dev);
 if (dev === 'development') {
   BASE_API = 'http://192.168.2.144:8888';
-  // BASE_API = 'http://140.143.136.44';
 } else {
-  BASE_API = 'http://140.143.136.44';
+  BASE_API = '';
 };
 
 const request = axios.create({
