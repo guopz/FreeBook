@@ -18,7 +18,7 @@ npm run build
 npm run build --report
 ```
 
-## DEMO 访问地址
+## 访问地址
 > [跳转地址](http://140.143.136.44)
 
 ## App下载地址
