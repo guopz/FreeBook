@@ -1,6 +1,6 @@
 # vue-book
 
-> A Vue.js project
+> VUE开发的单页面小说阅读应用，抓取真实数据，已经打包APK，可下载使用；
 
 ## Build Setup
 
@@ -19,7 +19,7 @@ npm run build --report
 ```
 
 ## DEMO 访问地址
-> http://140.143.136.44
+> [http://140.143.136.44](跳转)
 
 ## App下载地址
 > dist/unpackage
