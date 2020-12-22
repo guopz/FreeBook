@@ -59,7 +59,7 @@ const router = new Router({
 });
 
 // Set title
-let setTitle = function(title) {
+let setTitle = function(title: string) {
   title = title ? `${title}` : 'welcome';
   window.document.title = title + '-免费小说阅读';
 };
@@ -88,7 +88,7 @@ router.afterEach((to, from) => {
      store.commit('flagLoading', { show: false });
      setTitle(store.state.header.browserHeaderTitle);
   }, 500);
- 
+
 });
 
 export default router;

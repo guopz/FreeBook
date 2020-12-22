@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // 'books/free/lists': {
-      //   target: 'http://m.shucong.com',
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/': ''
-      //   }
-      // }
+      '/api': {
+        target: 'http://140.143.136.44',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
       // '/nodeApi/friend/list': {
       //   target: 'http://52.80.204.53',
       //   changeOrigin: true,

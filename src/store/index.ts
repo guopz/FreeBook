@@ -11,28 +11,33 @@ const state = {
   },
   loading: false
 };
+interface actionType {
+  browserHeaderTitle?: String
+  show?: Boolean
+}
+
 const mutations = {
-  changeTitle(state, action) {
+  changeTitle(state: any, action: actionType) {
     state.header.browserHeaderTitle = action.browserHeaderTitle;
   },
-  flagLoading(state, action) {
+  flagLoading(state: any, action: actionType) {
     state.loading = action.show;
   },
-  showMenuRight(state) {
+  showMenuRight(state: any) {
     state.header.headerBack = false,
     state.header.headerMenu = true
   },
-  showMenuLeft(state) {
+  showMenuLeft(state: any) {
     state.header.headerBack = true,
     state.header.headerMenu = false
   },
-  hideMenu(state) {
+  hideMenu(state: any) {
     state.header.headerBack = false,
     state.header.headerMenu = false
   }
 };
 const getters = {
-  LOADING: state => {
+  LOADING: (state: any) => {
     return state.loading;
   }
 };

@@ -1,41 +1,44 @@
 <template>
   <div id="app">
     <headerTop></headerTop>
-    <router-view/>
+    <router-view />
     <loading v-if="LOADING" />
   </div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import Vue from "vue";
 
-import headerTop from './layout/header'
-import loading from './components/loading'
-export default {
-  name: 'App',
+import { mapGetters } from "vuex";
+
+import headerTop from "./layout/header.vue";
+import loading from "./components/loading.vue";
+export default Vue.extend({
+  name: "App",
   data() {
     return {
-      title: '限时免费'
-    }
+      title: "限时免费",
+    };
   },
   computed: {
-     ...mapGetters([
-      'LOADING'
-    ])
+    // ...mapGetters(["LOADING"]),
+    'LOADING'() {
+      return this.$store.getters.LOADING;
+    }
   },
   created() {
-    console.log('loading', this.LOADING);
+    console.log("loading", this.LOADING);
   },
   components: {
     headerTop,
-    loading
-  }
-}
+    loading,
+  },
+});
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -46,7 +49,7 @@ export default {
 }
 
 #nprogress .spinner {
-  display: none!important;
+  display: none !important;
 }
 
 #nprogress .bar {

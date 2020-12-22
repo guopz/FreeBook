@@ -1,11 +1,12 @@
 import axios from 'axios'
-import NProgress from 'nprogress'
+// import NProgress from 'nprogress'
 import router from '../router'
 
-let dev = process.env.NODE_ENV, BASE_API;
+let dev = 'development'; // process.env.NODE_ENV;
+let BASE_API;
 
 if (dev === 'development') {
-  BASE_API = 'http://192.168.2.144:8888';
+  BASE_API = '/api/';
 } else {
   BASE_API = '';
 };
