@@ -1,13 +1,13 @@
 <template>
   <div class="chapter" :key="$route.path">
     <ul>
-      <li @click="myTabTo(item.articleId)" v-for="item in chapters" :article-id="item.articleId">{{ item.name }}</li>
+      <li @click="myTabTo(item.articleId)" v-for="item in chapters" :key="item.articleId" :article-id="item.articleId">{{ item.name }}</li>
     </ul>
     <div class="page-turn">
         <div class="page-last"><a @click="myCurPrev">上一页</a></div>
         <div class="page-select">
           <select @change="myGotoPage" v-model="curIndex">
-              <option v-for="item in totals">{{ item }}</option>
+              <option v-for="(item, index) in totals" :key="index">{{ item }}</option>
           </select>
         </div>
         <div class="page-next"><a @click="myCurNext">下一页</a></div>

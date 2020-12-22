@@ -49,7 +49,7 @@ const router = new Router({
     }
   ],
   scrollBehavior (to, from, savedPosition) {
-    console.log(savedPosition);
+    // console.log(savedPosition);
     if (savedPosition) {
       return savedPosition
     } else {

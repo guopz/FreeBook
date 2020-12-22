@@ -2,7 +2,7 @@
   <div>
     <div class="main">
       <ul class="m-list">
-        <li v-for="list in freeList">
+        <li v-for="(list, index) in freeList" :key="index">
           <list-item :params="list"></list-item>
         </li>
       </ul>
@@ -12,7 +12,7 @@
 
 <script>
 
-import ListItem from './base/listItem';
+import ListItem from './base/listItem.vue';
 
 export default {
   data() {
@@ -23,7 +23,6 @@ export default {
     }
   },
   created() {
-    console.log('created');
     this.request();
   },
   methods: {

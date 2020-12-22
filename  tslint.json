@@ -1,0 +1,9 @@
+{
+  "extends": "tslint-config-standard",
+  "rules": {
+    "ban-comma-operator": true
+  },
+  "globals": {
+    "require": true
+  }
+}

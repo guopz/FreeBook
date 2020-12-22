@@ -7,33 +7,28 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-
-import { mapGetters } from "vuex";
-
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Action, Mutation, State, Getter, namespace } from "vuex-class";
 import headerTop from "./layout/header.vue";
 import loading from "./components/loading.vue";
-export default Vue.extend({
-  name: "App",
-  data() {
-    return {
-      title: "限时免费",
-    };
-  },
-  computed: {
-    // ...mapGetters(["LOADING"]),
-    'LOADING'() {
-      return this.$store.getters.LOADING;
-    }
-  },
-  created() {
-    console.log("loading", this.LOADING);
-  },
+
+@Component({
   components: {
     headerTop,
-    loading,
-  },
-});
+    loading
+  }
+})
+export default class extends Vue {
+  private title:string =  "限时免费";
+  @Getter('LOADING') private LOADING: any;
+
+  created() {
+    console.log("created ==>", this.LOADING);
+  }
+  mounted() {
+     console.log("mounted ==>", this.LOADING);
+  }
+};
 </script>
 
 <style>
